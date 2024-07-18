@@ -3,6 +3,7 @@ import random
 from enum import Enum
 
 from ._row_stepper import step_row
+from ._renderer import render_tiles
 
 
 class GameOver(Exception):
@@ -115,3 +116,10 @@ class Board:
     def move(self, direction):
         self._move(direction)
         self._spawn()
+
+    
+    def __str__(self):
+        return render_tiles(self.tiles)
+
+    def __repr__(self):
+        return str(self)
