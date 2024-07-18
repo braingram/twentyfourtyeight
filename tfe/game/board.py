@@ -26,7 +26,7 @@ class Board:
     def __init__(self, tiles=None):
         if tiles is None:
             self.tiles = _make_blank_board()
-            self._spawn()
+            [self._spawn() for i in range(3)]
         else:
             self.tiles = tiles
 
@@ -41,7 +41,7 @@ class Board:
         if not coords:
             raise GameOver("No empty tiles!")
         r, c = random.choice(coords)
-        self.tiles[r][c] = random.choice(_ALL_TILE_VALUES)
+        self.tiles[r][c] = random.choice([2, 4])
 
     def _reverse_rows(self):
         self.tiles = [r[::-1] for r in self.tiles]
@@ -117,6 +117,9 @@ class Board:
         self._move(direction)
         self._spawn()
 
+    @property
+    def score(self):
+        return sum((sum(row) for row in self.tiles))
     
     def __str__(self):
         return render_tiles(self.tiles)
