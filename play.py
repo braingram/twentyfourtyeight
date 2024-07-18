@@ -10,9 +10,9 @@ KEYMAP = {
 }
 
 global board
+print("Arrow keys to move, q to quit\n")
 board = tfe.Board()
 print(board)
-print("--------------------")
 
 def on_press(key):
     if getattr(key, "char", "") == "q":
@@ -26,7 +26,6 @@ def on_press(key):
             print(f"Final score: {board.score}")
             return False
     print(board)
-    print("--------------------")
 
 
 with keyboard.Listener(on_press=on_press, suppress=True) as listener:

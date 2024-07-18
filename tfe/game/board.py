@@ -122,7 +122,7 @@ class Board:
         return sum((sum(row) for row in self.tiles))
     
     def __str__(self):
-        return render_tiles(self.tiles)
+        return f"{render_tiles(self.tiles)}\n------------------- Score: {self.score}"
 
     def __repr__(self):
         return str(self)
